@@ -20,7 +20,7 @@ reRTL = new RegExp("[" + rtlChars + "]", "g");
  * @param text - The text to check for RTL.
  * @returns a boolean value.
  */
-export const isRTL = (text: { replace: (arg0: RegExp, arg1: string) => { (): any; new(): any; length: any; }; match: (arg0: RegExp) => any; }) => {
+export const isRTL = (text: string) => {
   var textCount = text?.replace(/[0-9\s\\\/.,\-+="']/g, "").length; // remove multilengual characters from count
   var rtlCount = (text?.match(reRTL) || []).length;
   return rtlCount >= textCount - rtlCount && textCount > 0;

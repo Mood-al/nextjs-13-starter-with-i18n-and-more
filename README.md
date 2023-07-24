@@ -6,9 +6,8 @@ I created this project and will add more to it to use it in my future applicatio
 
 - i18n out of the box in the server and client components.
 - useful custom components and hooks (there are components to handle inputs and forms with validation and auto dir detection go to /login to see how they work).
-- auth is already configured all you have to do is go to AuthContext to uncomment the fetch lines and to /api and add your api url.
+- auth is already configured all you have to do is go to AuthContext to uncomment the fetch lines and to /api folder and add your api url in the files there.
 - api routes to handle auth and httponly cookie
-
 - uses bootstrap so all you have to do is just paste your bootstrap theme to bootstrap.css file
 
 ## Getting Started

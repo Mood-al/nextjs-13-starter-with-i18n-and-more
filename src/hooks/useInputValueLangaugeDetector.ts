@@ -1,12 +1,11 @@
-
-import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 import { isRTL } from "../utils/isRTL";
 import useUpdateEffect from "./useUpdateEffect";
 
-const useInputValueLangaugeDetector = (watch: unknown) => {
+const useInputValueLangaugeDetector = (watch: string) => {
   const [dir, setDir] = useState<string>("ltr");
-  const { locale } = useRouter();
+  const locale = useLocale();
   const [focussed, setFocussed] = useState(false);
 
   /* If the user is typing and the language is Arabic, then set the direction to
@@ -34,7 +33,7 @@ const useInputValueLangaugeDetector = (watch: unknown) => {
    * @param e - The event object.
    * @returns The `onInputFocus` function is being returned.
    */
-  const onInputFocus = (e) => {
+  const onInputFocus = (e: any) => {
     setFocussed(true);
     if (e.target.value === "" && locale === "ar") {
       setDir("rtl");
@@ -48,7 +47,7 @@ const useInputValueLangaugeDetector = (watch: unknown) => {
  * @param e - The event object that was passed to the onInputBlur function.
  
  */
-  const onInputBlur = (e) => {
+  const onInputBlur = (e: { target: { value: string } }) => {
     setFocussed(false);
     if (e.target.value === "" && locale === "ar") {
       setDir("rtl");

@@ -1,7 +1,12 @@
-const CustomOffcanvasFooter = (props) => {
+const CustomOffcanvasFooter = ({
+  children,
+  ...props
+}: {
+  children: JSX.Element | JSX.Element[] | string | React.ReactNode;
+}) => {
   return (
     <div className="border-top py-4 px-4" {...props}>
-      {props.children}
+      {children}
     </div>
   );
 };

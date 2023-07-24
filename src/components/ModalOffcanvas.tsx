@@ -1,5 +1,6 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslations } from "next-intl";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import CloseBtn from "./CloseBtn";
 import CustomOffcanvas from "./CustomOffcanvas";
@@ -10,8 +11,8 @@ interface ModalOffacanvasProps {
   showModalOffcanvas: boolean;
   handleCloseModalOffCanvas: () => void;
   title: JSX.Element | string;
-  children: JSX.Element | JSX.Element[] | string;
-  footerAction?: boolean;
+  children: JSX.Element | JSX.Element[] | string | React.ReactNode;
+  footerAction?: JSX.Element | JSX.Element[] | string | React.ReactNode;
   px?: string;
   py?: string;
 }
@@ -37,17 +38,23 @@ const ModalOffcanvas = ({
           placement={matches ? "bottom" : false}
           {...props}
         >
-          {title && (
-            <CustomOffcanvasHeader onCloseBtnClick={handleCloseModalOffCanvas}>
-              {t(title)}
-            </CustomOffcanvasHeader>
-          )}
-          <CustomOffcanvasBody className={`${px} ${py} `}>
-            {children}
-          </CustomOffcanvasBody>
-          {footerAction && (
-            <CustomOffcanvasFooter>{footerAction}</CustomOffcanvasFooter>
-          )}
+          <>
+            {title && (
+              <CustomOffcanvasHeader
+                onCloseBtnClick={handleCloseModalOffCanvas}
+              >
+                {t(title)}
+              </CustomOffcanvasHeader>
+            )}
+          </>
+          <>
+            <CustomOffcanvasBody className={`${px} ${py} `}>
+              {children}
+            </CustomOffcanvasBody>
+            {footerAction && (
+              <CustomOffcanvasFooter>{footerAction}</CustomOffcanvasFooter>
+            )}
+          </>
         </CustomOffcanvas>
       ) : (
         <Modal
